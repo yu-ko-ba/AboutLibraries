@@ -33,6 +33,7 @@ fun main() {
                 LibrariesContainer(
                     libraries,
                     Modifier.fillMaxSize(),
+                    showDescription = true,
                     onLibraryClick = { library ->
                         val license = library.licenses.firstOrNull()
                         if (!license?.url.isNullOrBlank()) {

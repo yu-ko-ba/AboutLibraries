@@ -22,7 +22,11 @@ fun main() = application {
                 val libraries by rememberLibraries {
                     Res.readBytes("files/aboutlibraries.json").decodeToString()
                 }
-                LibrariesContainer(libraries, Modifier.fillMaxSize())
+                LibrariesContainer(
+                    libraries,
+                    Modifier.fillMaxSize(),
+                    showDescription = true
+                )
             }
         }
     }

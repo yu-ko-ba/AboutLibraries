@@ -60,6 +60,7 @@ fun LibrariesContainer(
     showAuthor: Boolean = true,
     showVersion: Boolean = true,
     showLicenseBadges: Boolean = true,
+    showDescription: Boolean = false,
     colors: LibraryColors = LibraryDefaults.libraryColors(),
     padding: LibraryPadding = LibraryDefaults.libraryPadding(),
     itemContentPadding: PaddingValues = LibraryDefaults.ContentPadding,
@@ -82,6 +83,7 @@ fun LibrariesContainer(
         showAuthor = showAuthor,
         showVersion = showVersion,
         showLicenseBadges = showLicenseBadges,
+        showDescription = showDescription,
         colors = colors,
         padding = padding,
         itemContentPadding = itemContentPadding,
@@ -171,6 +173,7 @@ fun Libraries(
     showAuthor: Boolean = true,
     showVersion: Boolean = true,
     showLicenseBadges: Boolean = true,
+    showDescription: Boolean = false,
     colors: LibraryColors = LibraryDefaults.libraryColors(),
     padding: LibraryPadding = LibraryDefaults.libraryPadding(),
     itemContentPadding: PaddingValues = LibraryDefaults.ContentPadding,
@@ -192,6 +195,7 @@ fun Libraries(
             showAuthor,
             showVersion,
             showLicenseBadges,
+            showDescription,
             colors,
             padding,
             itemContentPadding
@@ -217,6 +221,7 @@ internal inline fun LazyListScope.libraryItems(
     showAuthor: Boolean = true,
     showVersion: Boolean = true,
     showLicenseBadges: Boolean = true,
+    showDescription: Boolean = false,
     colors: LibraryColors,
     padding: LibraryPadding,
     itemContentPadding: PaddingValues = LibraryDefaults.ContentPadding,
@@ -228,6 +233,7 @@ internal inline fun LazyListScope.libraryItems(
             showAuthor,
             showVersion,
             showLicenseBadges,
+            showDescription,
             colors,
             padding,
             itemContentPadding
@@ -244,6 +250,7 @@ internal fun Library(
     showAuthor: Boolean = true,
     showVersion: Boolean = true,
     showLicenseBadges: Boolean = true,
+    showDescription: Boolean = false,
     colors: LibraryColors = LibraryDefaults.libraryColors(),
     padding: LibraryPadding = LibraryDefaults.libraryPadding(),
     contentPadding: PaddingValues = LibraryDefaults.ContentPadding,
@@ -281,6 +288,14 @@ internal fun Library(
                     textAlign = TextAlign.Center
                 )
             }
+        }
+        val description = library.description
+        if (showDescription && description != null) {
+            Text(
+                text = description,
+                style = typography.caption,
+                color = colors.contentColor
+            )
         }
         val author = library.author
         if (showAuthor && author.isNotBlank()) {
